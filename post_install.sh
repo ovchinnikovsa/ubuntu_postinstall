@@ -76,7 +76,8 @@ apt_install "git"
 #/Install git
 
 #Install vscode
-#snap_install "vscode"
+clear
+sudo snap install --classic code || error_exit "vscode setup"
 #/Install vscode
 
 #Install telegram-desktop
@@ -92,7 +93,21 @@ else
 	sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb || error_exit "chrome set depends"
 	rm google-chrome-stable_current_amd64.deb
 fi
-#Install 
+#Install google chrome
+
+#Install phpstorm
+clear
+sudo snap install phpstorm --channel=2020.3/stable --classic || error_exit "phpstorm setup"
+#/Install phpstorm
+
+#Install neofetch
+apt_install "neofetch"
+#/Install neofetch
+
+#Install gparted
+apt_install "gparted"
+#/Install gparted
+
 
 clear
 echo "Install completed!"
@@ -106,15 +121,39 @@ echo "Install completed!"
 # Settings #
 #----------#
 
+#Setting set ssh keys
+if ! [ -d /home/"$SUDO_USER"/.ssh/ ]; then
+	ssh-keygen -t rsa || error_exit "keygen"
+else
+	echo "keys already exsits"
+fi
+#/Setting set ssh keys
+
+#Setting hide mounted disk
+gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false || error_exit "hide mounted disk"
+#/Setting hide mounted disk
+
+#Setting show mounted disk
+#gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts true
+#/Setting show mounted disk
+
+#Setting set theme
+#Write theme name into variable theme to change it
+theme="Adwaita-dark"
+gsettings set org.gnome.desktop.interface gtk-theme "$theme"
+#/Setting set theme
+
+
+#Setting
 
 
 clear
+neofetch
 echo "Settings completed!"
 
 #-----------#
 # /Settings #
 #-----------#
-
 
 
 set +e
