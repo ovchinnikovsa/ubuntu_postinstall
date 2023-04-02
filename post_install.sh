@@ -113,26 +113,26 @@ apt_install "gparted"
 # DOCKER #
 #--------#
 
-sudo apt-get update
+#sudo apt-get update
 
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg
+#sudo apt-get install \
+#    ca-certificates \
+#    curl \
+#    gnupg
 
-sudo mkdir -m 0755 -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+#sudo mkdir -m 0755 -p /etc/apt/keyrings
+#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 
-echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+#echo \
+#  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+#  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+#  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin > /dev/null
+#sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin > /dev/null
 
 #sudo groupadd docker > /dev/null
 
-sudo usermod -aG docker $USER
+#sudo usermod -aG docker $USER
 
 #newgrp docker > /dev/null
 
@@ -174,6 +174,9 @@ theme="Adwaita-dark"
 gsettings set org.gnome.desktop.interface gtk-theme "$theme"
 #/Setting set theme
 
+#Setting alt+shift to switch keyboard language
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Shift>Alt_L']"
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Shift_L']"
 
 #Setting
 
