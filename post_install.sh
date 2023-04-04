@@ -178,6 +178,10 @@ gsettings set org.gnome.desktop.interface gtk-theme "$theme"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Shift>Alt_L']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Shift_L']"
 
+
+#Setting click on task panel to hide window
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
 #Setting
 
 
